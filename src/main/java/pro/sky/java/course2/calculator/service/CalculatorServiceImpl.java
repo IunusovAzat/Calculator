@@ -1,6 +1,7 @@
 package pro.sky.java.course2.calculator.service;
 
 import org.springframework.stereotype.Service;
+import pro.sky.java.course2.calculator.exception.DivisionByZeroException;
 
 @Service
 public class CalculatorServiceImpl implements CalculatorService {
@@ -23,7 +24,9 @@ public class CalculatorServiceImpl implements CalculatorService {
 
     @Override
     public double division(Integer x, Integer y) throws IllegalAccessException {
-        if(y==0) throw new IllegalAccessException("Неверное значение num2");
+        if(x == null || y ==null){
+            throw new DivisionByZeroException();
+        }
         return (double)x / y;
     }
 }
